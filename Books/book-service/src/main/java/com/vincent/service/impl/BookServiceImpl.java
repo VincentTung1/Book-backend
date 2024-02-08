@@ -15,4 +15,9 @@ public class BookServiceImpl implements BookService {
     public Book getBookById(int bid) {
         return bookMapper.getBookById(bid);
     }
+
+    @Override
+    public void createBook(String name, String desc, String author, String year) {
+       bookMapper.createBook(name,desc,author,year);
+    }
 }
