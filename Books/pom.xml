@@ -11,8 +11,12 @@
     <groupId>com.vincent</groupId>
     <artifactId>Books</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>Books</name>
     <description>Books</description>
+    <modules>
+        <module>book-service</module>
+    </modules>
     <properties>
         <java.version>17</java.version>
     </properties>
