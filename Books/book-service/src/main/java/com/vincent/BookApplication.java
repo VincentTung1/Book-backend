@@ -2,8 +2,10 @@ package com.vincent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan({"com.vincent.mapper"})
 public class BookApplication {
 
     public static void main(String[] args) {
