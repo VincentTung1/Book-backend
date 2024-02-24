@@ -24,4 +24,20 @@ public class BookController {
        bookService.createBook(name,desc,author,year);
     }
 
+    @RequestMapping(value = "/book/book-update",method = RequestMethod.POST)
+    public void updateBook(
+            @RequestParam("bid") int bid,
+            @RequestParam("name") String name,
+            @RequestParam("desc")   String desc,
+            @RequestParam("author")   String author,
+            @RequestParam("year") String year
+    ){
+        bookService.updateBook(bid,name,desc,author,year);
+    }
+
+    @RequestMapping(value = "/book/book-delete",method = RequestMethod.POST)
+    public void deleteBook(@RequestParam("bid") int bid){
+       bookService.deleteBook(bid);
+    }
+
 }

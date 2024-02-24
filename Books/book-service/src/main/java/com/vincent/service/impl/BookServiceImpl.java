@@ -20,4 +20,14 @@ public class BookServiceImpl implements BookService {
     public void createBook(String name, String desc, String author, String year) {
        bookMapper.createBook(name,desc,author,year);
     }
+
+    @Override
+    public void updateBook(int bid, String name, String desc, String author, String year) {
+       bookMapper.updateBook(bid,name,desc,author,year);
+    }
+
+    @Override
+    public void deleteBook(int bid) {
+       bookMapper.deleteBook(bid);
+    }
 }
