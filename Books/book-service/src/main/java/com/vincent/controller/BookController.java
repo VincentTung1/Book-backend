@@ -2,8 +2,9 @@ package com.vincent.controller;
 
 import com.vincent.entity.Book;
 import com.vincent.service.BookService;
-import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import javax.annotation.Resource;
+import javax.websocket.server.PathParam;
 
 @RestController
 public class BookController {
@@ -15,29 +16,25 @@ public class BookController {
         return bookService.getBookById(bid);
     }
 
-    @RequestMapping(value = "/book/book-insert",method = RequestMethod.POST)
-    public void createBook(
-            @RequestParam("name") String name,
-            @RequestParam("desc")   String desc,
-            @RequestParam("author")   String author,
-            @RequestParam("year") String year){
-       bookService.createBook(name,desc,author,year);
+    @PostMapping(value = "/book/book-insert")
+    public String createBook(
+            @RequestBody Book book){
+       bookService.createBook(book.getName(),book.getDesc(),book.getAuthor(),book.getYear());
+       return "success";
     }
 
-    @RequestMapping(value = "/book/book-update",method = RequestMethod.POST)
-    public void updateBook(
-            @RequestParam("bid") int bid,
-            @RequestParam("name") String name,
-            @RequestParam("desc")   String desc,
-            @RequestParam("author")   String author,
-            @RequestParam("year") String year
+    @PostMapping(value = "/book/book-update")
+    public String updateBook(
+            @RequestBody Book book
     ){
-        bookService.updateBook(bid,name,desc,author,year);
+        bookService.updateBook(book.getBid(),book.getName(),book.getDesc(),book.getAuthor(),book.getYear());
+        return "success";
     }
 
-    @RequestMapping(value = "/book/book-delete",method = RequestMethod.POST)
-    public void deleteBook(@RequestParam("bid") int bid){
+    @RequestMapping(value = "/book/book-delete")
+    public String deleteBook(@PathParam("bid") int bid){
        bookService.deleteBook(bid);
+        return "success";
     }
 
 }
